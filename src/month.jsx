@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import Week from "./week";
 import * as utils from "./date_utils";
+import isSameWeek from "date-fns/isSameWeek";
 
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6;
 
@@ -18,6 +19,7 @@ export default class Month extends React.Component {
     fixedHeight: PropTypes.bool,
     formatWeekNumber: PropTypes.func,
     highlightDates: PropTypes.instanceOf(Map),
+    doctorSlots: PropTypes.array,
     includeDates: PropTypes.array,
     inline: PropTypes.bool,
     locale: PropTypes.string,
@@ -66,6 +68,14 @@ export default class Month extends React.Component {
     );
   };
 
+  filterSlotsByWeek = currentWeekStart => {
+    return this.props.doctorSlots
+      ? this.props.doctorSlots.filter(slot =>
+          isSameWeek(currentWeekStart, slot.date)
+        )
+      : [];
+  };
+
   renderWeeks = () => {
     const weeks = [];
     var isFixedHeight = this.props.fixedHeight;
@@ -93,6 +103,7 @@ export default class Month extends React.Component {
           includeDates={this.props.includeDates}
           inline={this.props.inline}
           highlightDates={this.props.highlightDates}
+          doctorSlots={this.filterSlotsByWeek(currentWeekStart)}
           selectingDate={this.props.selectingDate}
           filterDate={this.props.filterDate}
           preSelection={this.props.preSelection}

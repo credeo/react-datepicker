@@ -19,7 +19,7 @@ export default class Week extends React.Component {
     filterDate: PropTypes.func,
     formatWeekNumber: PropTypes.func,
     highlightDates: PropTypes.instanceOf(Map),
-    includeDates: PropTypes.array,
+    doctorSlots: PropTypes.array,
     inline: PropTypes.bool,
     locale: PropTypes.string,
     maxDate: PropTypes.instanceOf(Date),
@@ -68,6 +68,12 @@ export default class Week extends React.Component {
     return utils.getWeek(startOfWeek);
   };
 
+  filterSlotsByDay = day => {
+    return this.props.doctorSlots
+      ? this.props.doctorSlots.filter(slot => utils.isSameDay(slot.date, day))
+      : [];
+  };
+
   renderDays = () => {
     const startOfWeek = utils.getStartOfWeek(this.props.day, this.props.locale);
     const days = [];
@@ -96,6 +102,7 @@ export default class Week extends React.Component {
             includeDates={this.props.includeDates}
             inline={this.props.inline}
             highlightDates={this.props.highlightDates}
+            doctorSlots={this.filterSlotsByDay(day)}
             selectingDate={this.props.selectingDate}
             filterDate={this.props.filterDate}
             preSelection={this.props.preSelection}

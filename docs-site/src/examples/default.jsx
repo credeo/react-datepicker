@@ -15,6 +15,17 @@ export default class Default extends React.Component {
     });
   };
 
+  getDoctorAppointments = () => {
+    return [
+      {
+        color: "appointment-green"
+      },
+      {
+        color: "appointment-purple"
+      }
+    ];
+  };
+
   render() {
     return (
       <div className="row">
@@ -24,6 +35,24 @@ export default class Default extends React.Component {
 <DatePicker
     selected={this.state.startDate}
     onChange={this.handleChange}
+    doctorSlots=[
+              {
+                color: 'olive',
+                date: new Date('2019-01-24'),
+              },
+              {
+                color: 'olive',
+                date: new Date('2019-01-16'),
+              },
+              {
+                color: 'pink',
+                date: new Date('2019-01-16'),
+              },
+              {
+                color: 'pink',
+                date: new Date('2019-01-03'),
+              },
+            ]
 />
 `}
           </code>
@@ -32,6 +61,24 @@ export default class Default extends React.Component {
           <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}
+            doctorSlots={[
+              {
+                color: "olive",
+                date: new Date("2019-01-24")
+              },
+              {
+                color: "olive",
+                date: new Date("2019-01-16")
+              },
+              {
+                color: "pink",
+                date: new Date("2019-01-16")
+              },
+              {
+                color: "pink",
+                date: new Date("2019-01-03")
+              }
+            ]}
           />
         </div>
       </div>

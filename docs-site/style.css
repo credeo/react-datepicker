@@ -432,6 +432,9 @@
 .react-datepicker__day--disabled:hover {
   background-color: transparent;
 }
+.react-datepicker__day .slot-dot {
+  color: deeppink;
+}
 
 .react-datepicker__input-container {
   position: relative;

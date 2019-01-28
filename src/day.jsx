@@ -33,7 +33,8 @@ export default class Day extends React.Component {
     selectsEnd: PropTypes.bool,
     selectsStart: PropTypes.bool,
     startDate: PropTypes.instanceOf(Date),
-    renderDayContents: PropTypes.func
+    renderDayContents: PropTypes.func,
+    doctorSlots: PropTypes.array
   };
 
   handleClick = event => {
@@ -205,6 +206,14 @@ export default class Day extends React.Component {
         {this.props.renderDayContents
           ? this.props.renderDayContents(getDate(this.props.day))
           : getDate(this.props.day)}
+        {this.props.doctorSlots &&
+          this.props.doctorSlots.map((slot, key) => {
+            return (
+              <span className={`slot-dot slot-${slot.color}`} key={key}>
+                O
+              </span>
+            );
+          })}
       </div>
     );
   }

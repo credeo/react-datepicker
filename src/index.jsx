@@ -94,6 +94,7 @@ export default class DatePicker extends React.Component {
     fixedHeight: PropTypes.bool,
     formatWeekNumber: PropTypes.func,
     highlightDates: PropTypes.array,
+    doctorSlots: PropTypes.array,
     id: PropTypes.string,
     includeDates: PropTypes.array,
     includeTimes: PropTypes.array,
@@ -227,6 +228,11 @@ export default class DatePicker extends React.Component {
         highlightDates: getHightLightDaysMap(this.props.highlightDates)
       });
     }
+    if (prevProps.doctorSlots !== this.props.doctorSlots) {
+      this.setState({
+        doctorSlots: this.props.doctorSlots
+      });
+    }
     if (
       !prevState.focused &&
       hasSelectionChanged(prevProps.selected, this.props.selected)
@@ -267,6 +273,7 @@ export default class DatePicker extends React.Component {
       // transforming highlighted days (perhaps nested array)
       // to flat Map for faster access in day.jsx
       highlightDates: getHightLightDaysMap(this.props.highlightDates),
+      doctorSlots: this.props.doctorSlots,
       focused: false
     };
   };
@@ -626,6 +633,7 @@ export default class DatePicker extends React.Component {
         onClickOutside={this.handleCalendarClickOutside}
         formatWeekNumber={this.props.formatWeekNumber}
         highlightDates={this.state.highlightDates}
+        doctorSlots={this.state.doctorSlots}
         includeDates={this.props.includeDates}
         includeTimes={this.props.includeTimes}
         injectTimes={this.props.injectTimes}

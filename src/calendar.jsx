@@ -61,6 +61,7 @@ export default class Calendar extends React.Component {
     fixedHeight: PropTypes.bool,
     formatWeekNumber: PropTypes.func,
     highlightDates: PropTypes.instanceOf(Map),
+    doctorSlots: PropTypes.array,
     includeDates: PropTypes.array,
     includeTimes: PropTypes.array,
     injectTimes: PropTypes.array,
@@ -571,6 +572,7 @@ export default class Calendar extends React.Component {
             maxDate={this.props.maxDate}
             excludeDates={this.props.excludeDates}
             highlightDates={this.props.highlightDates}
+            doctorSlots={this.props.doctorSlots}
             selectingDate={this.state.selectingDate}
             includeDates={this.props.includeDates}
             inline={this.props.inline}
