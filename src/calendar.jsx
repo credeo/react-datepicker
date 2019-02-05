@@ -484,7 +484,7 @@ export default class Calendar extends React.Component {
 
   renderDefaultHeader = ({ monthDate, i }) => (
     <div className="react-datepicker__header">
-      {this.renderCurrentMonth(monthDate)}
+      {/*{this.renderCurrentMonth(monthDate)}*/}
       <div
         className={`react-datepicker__header__dropdown react-datepicker__header__dropdown--${
           this.props.dropdownMode
@@ -634,10 +634,13 @@ export default class Calendar extends React.Component {
           "react-datepicker--time-only": this.props.showTimeSelectOnly
         })}
       >
-        {this.renderPreviousMonthButton()}
-        {this.renderNextMonthButton()}
+        <div className={"sisa"}>
+          {this.renderCurrentMonth()}
+          {this.renderPreviousMonthButton()}
+          {this.renderTodayButton()}
+          {this.renderNextMonthButton()}
+        </div>
         {this.renderMonths()}
-        {this.renderTodayButton()}
         {this.renderTimeSection()}
         {this.props.children}
       </Container>

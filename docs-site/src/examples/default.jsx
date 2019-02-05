@@ -64,6 +64,7 @@ export default class Default extends React.Component {
         </pre>
         <div className="column">
           <DatePicker
+            todayButton={"heute"}
             inline
             selected={this.state.startDate}
             onChange={this.handleChange}

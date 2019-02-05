@@ -54441,23 +54441,6 @@
             }),
             (_this.filterSlotsByDay = function(day) {
               var colorsAlreadyIn = [];
-              var slots = _this.props.doctorSlots
-                ? _this.props.doctorSlots.filter(function(slot) {
-                    if (utils.isSameDay(slot.date, day)) {
-                      if (colorsAlreadyIn.includes(slot.color)) {
-                        return false;
-                      } else {
-                        colorsAlreadyIn.push(slot.color);
-                        return true;
-                      }
-                    }
-                    return false;
-                  })
-                : [];
-              return slots;
-            }),
-            (_this.filterSlotsByDayTsu = function(day) {
-              var colorsAlreadyIn = [];
               return _this.props.doctorSlots
                 ? _this.props.doctorSlots.filter(function(slot) {
                     if (utils.isSameDay(slot.date, day)) {
