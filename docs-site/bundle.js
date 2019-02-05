@@ -40639,7 +40639,7 @@
           };
 
           _this.state = {
-            startDate: new Date()
+            startDate: new Date("2019-01-01")
           };
           return _this;
         }
@@ -40654,22 +40654,27 @@
               _react2.default.createElement(
                 "code",
                 { className: "jsx" },
-                "\n<DatePicker\n    selected={this.state.startDate}\n    onChange={this.handleChange}\n    doctorSlots=[\n              {\n                color: 'olive',\n                date: new Date('2019-01-24'),\n              },\n              {\n                color: 'olive',\n                date: new Date('2019-01-16'),\n              },\n              {\n                color: 'pink',\n                date: new Date('2019-01-16'),\n              },\n              {\n                color: 'pink',\n                date: new Date('2019-01-03'),\n              },\n            ]\n/>\n"
+                "\n<DatePicker\n    inline\n    selected={this.state.startDate}\n    onChange={this.handleChange}\n    doctorSlots=[\n              {\n                color: 'blue',\n                date: new Date('2019-01-24'),\n              },\n              {\n                color: 'blue',\n                date: new Date('2019-01-16'),\n              },\n              {\n                color: 'blue',\n                date: new Date('2019-01-16'),\n              },\n              {\n                color: 'pink',\n                date: new Date('2019-01-16'),\n              },\n              {\n                color: 'pink',\n                date: new Date('2019-01-03'),\n              },\n            ]\n/>\n"
               )
             ),
             _react2.default.createElement(
               "div",
               { className: "column" },
               _react2.default.createElement(_reactDatepicker2.default, {
+                inline: true,
                 selected: this.state.startDate,
                 onChange: this.handleChange,
                 doctorSlots: [
                   {
-                    color: "olive",
+                    color: "blue",
                     date: new Date("2019-01-24")
                   },
                   {
-                    color: "olive",
+                    color: "blue",
+                    date: new Date("2019-01-16")
+                  },
+                  {
+                    color: "blue",
                     date: new Date("2019-01-16")
                   },
                   {
@@ -54435,9 +54440,35 @@
               return utils.getWeek(startOfWeek);
             }),
             (_this.filterSlotsByDay = function(day) {
+              var colorsAlreadyIn = [];
+              var slots = _this.props.doctorSlots
+                ? _this.props.doctorSlots.filter(function(slot) {
+                    if (utils.isSameDay(slot.date, day)) {
+                      if (colorsAlreadyIn.includes(slot.color)) {
+                        return false;
+                      } else {
+                        colorsAlreadyIn.push(slot.color);
+                        return true;
+                      }
+                    }
+                    return false;
+                  })
+                : [];
+              return slots;
+            }),
+            (_this.filterSlotsByDayTsu = function(day) {
+              var colorsAlreadyIn = [];
               return _this.props.doctorSlots
                 ? _this.props.doctorSlots.filter(function(slot) {
-                    return utils.isSameDay(slot.date, day);
+                    if (utils.isSameDay(slot.date, day)) {
+                      if (colorsAlreadyIn.includes(slot.color)) {
+                        return false;
+                      } else {
+                        colorsAlreadyIn.push(slot.color);
+                        return true;
+                      }
+                    }
+                    return false;
                   })
                 : [];
             }),
@@ -54843,19 +54874,27 @@
               "aria-label": "day-" + (0, _date_utils.getDate)(this.props.day),
               role: "option"
             },
-            this.props.renderDayContents
-              ? this.props.renderDayContents(
-                  (0, _date_utils.getDate)(this.props.day)
-                )
-              : (0, _date_utils.getDate)(this.props.day),
-            this.props.doctorSlots &&
-              this.props.doctorSlots.map(function(slot, key) {
-                return _react2.default.createElement(
-                  "span",
-                  { className: "slot-dot slot-" + slot.color, key: key },
-                  "O"
-                );
-              })
+            _react2.default.createElement(
+              "div",
+              { className: "slot-day" },
+              this.props.renderDayContents
+                ? this.props.renderDayContents(
+                    (0, _date_utils.getDate)(this.props.day)
+                  )
+                : (0, _date_utils.getDate)(this.props.day)
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "slot-dots" },
+              this.props.doctorSlots &&
+                this.props.doctorSlots.map(function(slot, key) {
+                  return _react2.default.createElement(
+                    "span",
+                    { className: "slot-dot slot-" + slot.color, key: key },
+                    "O"
+                  );
+                })
+            )
           );
         };
 

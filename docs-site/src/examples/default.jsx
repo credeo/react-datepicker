@@ -5,7 +5,7 @@ export default class Default extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date()
+      startDate: new Date("2019-01-01")
     };
   }
 
@@ -33,15 +33,20 @@ export default class Default extends React.Component {
           <code className="jsx">
             {`
 <DatePicker
+    inline
     selected={this.state.startDate}
     onChange={this.handleChange}
     doctorSlots=[
               {
-                color: 'olive',
+                color: 'blue',
                 date: new Date('2019-01-24'),
               },
               {
-                color: 'olive',
+                color: 'blue',
+                date: new Date('2019-01-16'),
+              },
+              {
+                color: 'blue',
                 date: new Date('2019-01-16'),
               },
               {
@@ -59,15 +64,20 @@ export default class Default extends React.Component {
         </pre>
         <div className="column">
           <DatePicker
+            inline
             selected={this.state.startDate}
             onChange={this.handleChange}
             doctorSlots={[
               {
-                color: "olive",
+                color: "blue",
                 date: new Date("2019-01-24")
               },
               {
-                color: "olive",
+                color: "blue",
+                date: new Date("2019-01-16")
+              },
+              {
+                color: "blue",
                 date: new Date("2019-01-16")
               },
               {

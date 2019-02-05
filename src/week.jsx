@@ -69,8 +69,19 @@ export default class Week extends React.Component {
   };
 
   filterSlotsByDay = day => {
+    let colorsAlreadyIn = [];
     return this.props.doctorSlots
-      ? this.props.doctorSlots.filter(slot => utils.isSameDay(slot.date, day))
+      ? this.props.doctorSlots.filter(slot => {
+          if (utils.isSameDay(slot.date, day)) {
+            if (colorsAlreadyIn.includes(slot.color)) {
+              return false;
+            } else {
+              colorsAlreadyIn.push(slot.color);
+              return true;
+            }
+          }
+          return false;
+        })
       : [];
   };
 

@@ -433,7 +433,13 @@
   background-color: transparent;
 }
 .react-datepicker__day .slot-dot {
+  color: grey;
+}
+.react-datepicker__day .slot-pink {
   color: deeppink;
+}
+.react-datepicker__day .slot-blue {
+  color: blue;
 }
 
 .react-datepicker__input-container {

@@ -203,17 +203,21 @@ export default class Day extends React.Component {
         aria-label={`day-${getDate(this.props.day)}`}
         role="option"
       >
-        {this.props.renderDayContents
-          ? this.props.renderDayContents(getDate(this.props.day))
-          : getDate(this.props.day)}
-        {this.props.doctorSlots &&
-          this.props.doctorSlots.map((slot, key) => {
-            return (
-              <span className={`slot-dot slot-${slot.color}`} key={key}>
-                O
-              </span>
-            );
-          })}
+        <div className={"slot-day"}>
+          {this.props.renderDayContents
+            ? this.props.renderDayContents(getDate(this.props.day))
+            : getDate(this.props.day)}
+        </div>
+        <div className={"slot-dots"}>
+          {this.props.doctorSlots &&
+            this.props.doctorSlots.map((slot, key) => {
+              return (
+                <span className={`slot-dot slot-${slot.color}`} key={key}>
+                  O
+                </span>
+              );
+            })}
+        </div>
       </div>
     );
   }
