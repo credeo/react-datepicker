@@ -40661,28 +40661,29 @@
               "div",
               { className: "column" },
               _react2.default.createElement(_reactDatepicker2.default, {
+                todayButton: "heute",
                 inline: true,
                 selected: this.state.startDate,
                 onChange: this.handleChange,
                 doctorSlots: [
                   {
-                    color: "blue",
+                    color: [0, 0, 255],
                     date: new Date("2019-01-24")
                   },
                   {
-                    color: "blue",
+                    color: [0, 0, 255],
                     date: new Date("2019-01-16")
                   },
                   {
-                    color: "blue",
+                    color: [0, 0, 255],
                     date: new Date("2019-01-16")
                   },
                   {
-                    color: "pink",
+                    color: [255, 0, 0],
                     date: new Date("2019-01-16")
                   },
                   {
-                    color: "pink",
+                    color: [255, 0, 0],
                     date: new Date("2019-01-03")
                   }
                 ]
@@ -42350,7 +42351,6 @@
             return _react2.default.createElement(
               "div",
               { className: "react-datepicker__header" },
-              _this.renderCurrentMonth(monthDate),
               _react2.default.createElement(
                 "div",
                 {
@@ -42568,10 +42568,19 @@
                 }
               )
             },
-            this.renderPreviousMonthButton(),
-            this.renderNextMonthButton(),
+            _react2.default.createElement(
+              "div",
+              { className: "react-datepicker--header-nav-container" },
+              this.renderCurrentMonth(),
+              _react2.default.createElement(
+                "div",
+                { className: "react-datepicker--header-just-nav-" },
+                this.renderPreviousMonthButton(),
+                this.renderTodayButton(),
+                this.renderNextMonthButton()
+              )
+            ),
             this.renderMonths(),
-            this.renderTodayButton(),
             this.renderTimeSection(),
             this.props.children
           );
@@ -54873,10 +54882,23 @@
                 this.props.doctorSlots.map(function(slot, key) {
                   return _react2.default.createElement(
                     "span",
-                    { className: "slot-dot slot-" + slot.color, key: key },
-                    "O"
+                    {
+                      key: key,
+                      className:
+                        "slot-dot slot-" +
+                        slot.color[0] +
+                        "-" +
+                        slot.color[1] +
+                        "-" +
+                        slot.color[2],
+                      style: {
+                        backgroundColor: "rgb(" + slot.color + ")"
+                      }
+                    },
+                    "X"
                   );
-                })
+                }),
+              "\xA0"
             )
           );
         };

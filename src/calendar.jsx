@@ -634,11 +634,13 @@ export default class Calendar extends React.Component {
           "react-datepicker--time-only": this.props.showTimeSelectOnly
         })}
       >
-        <div className={"sisa"}>
+        <div className={"react-datepicker--header-nav-container"}>
           {this.renderCurrentMonth()}
-          {this.renderPreviousMonthButton()}
-          {this.renderTodayButton()}
-          {this.renderNextMonthButton()}
+          <div className={"react-datepicker--header-just-nav-"}>
+            {this.renderPreviousMonthButton()}
+            {this.renderTodayButton()}
+            {this.renderNextMonthButton()}
+          </div>
         </div>
         {this.renderMonths()}
         {this.renderTimeSection()}

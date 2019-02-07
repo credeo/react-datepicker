@@ -70,23 +70,23 @@ export default class Default extends React.Component {
             onChange={this.handleChange}
             doctorSlots={[
               {
-                color: "blue",
+                color: [0, 0, 255],
                 date: new Date("2019-01-24")
               },
               {
-                color: "blue",
+                color: [0, 0, 255],
                 date: new Date("2019-01-16")
               },
               {
-                color: "blue",
+                color: [0, 0, 255],
                 date: new Date("2019-01-16")
               },
               {
-                color: "pink",
+                color: [255, 0, 0],
                 date: new Date("2019-01-16")
               },
               {
-                color: "pink",
+                color: [255, 0, 0],
                 date: new Date("2019-01-03")
               }
             ]}

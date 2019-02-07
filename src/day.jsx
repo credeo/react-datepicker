@@ -212,11 +212,20 @@ export default class Day extends React.Component {
           {this.props.doctorSlots &&
             this.props.doctorSlots.map((slot, key) => {
               return (
-                <span className={`slot-dot slot-${slot.color}`} key={key}>
-                  O
+                <span
+                  key={key}
+                  className={`slot-dot slot-${slot.color[0]}-${slot.color[1]}-${
+                    slot.color[2]
+                  }`}
+                  style={{
+                    backgroundColor: `rgb(${slot.color})`
+                  }}
+                >
+                  X
                 </span>
               );
             })}
+          &nbsp;
         </div>
       </div>
     );
